@@ -6,3 +6,16 @@ script:
 services:
   - docker
 sudo: required
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app:  "docker-rec"
+  env: "DockerRec-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-289171225669"
+  bucket_path: "docker-rec"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
